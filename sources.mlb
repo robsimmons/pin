@@ -1,1 +1,4 @@
+$(SML_LIB)/basis/basis.mlb
+types.sml
 foclang.sml
+typecheck.sml

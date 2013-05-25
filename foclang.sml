@@ -1,34 +1,6 @@
 structure Lang =
 struct
 
-datatype ty =
-   Int                       (* int - no way to eta expand at this type! *)
- | U of ty                   (* vA- or U A- *)
- | Bot                       (* 0 *)
- | Or of ty * ty             (* A+ + B+ *)
- | PTop                      (* 1 *)
- | PAnd of ty * ty           (* A+ * B+ *)
- | F of ty                   (* ^A+ or F A+ *)
- | Imp of ty * ty            (* A+ -> B- *)
- | NTop                      (* T *)
- | NAnd of ty * ty           (* A- & B- *)
-
-(*[ datasort pos = 
-       Int 
-     | U of neg
-     | Bot
-     | Or of pos * pos
-     | PTop 
-     | PAnd of pos * pos
- 
-    and neg = 
-       F of pos
-     | Imp of pos * neg
-     | NTop 
-     | NAnd of neg * neg ]*)
-
-datatype ctxelem = N of ty | Susp of ty
-
 datatype exp =             
    Var of int                (* z *)
  | Thunk of exp              (* thunk N *)
@@ -91,8 +63,8 @@ datatype exp =
     and spine = 
        Nil
      | PM of term
-     | App of term * term
-     | ProjL of term
-     | ProjR of term ]*)
+     | App of value * spine
+     | ProjL of spine
+     | ProjR of spine ]*)
 
 end
